@@ -31,7 +31,7 @@ async function getDashboardData(query) {
             data.country = destination?.country;
         }
 
-        if (weathersResult === 'rejected') {
+        if (weathersResult.status === 'rejected') {
             console.error(`provlema in weathers: `, weathersResult.reason)
             data.temperature = null;
             data.weather = null;
@@ -41,7 +41,7 @@ async function getDashboardData(query) {
             data.weather = weather?.weather_description;
         }
 
-        if (airportsResult === 'rejected') {
+        if (airportsResult.status === 'rejected') {
             console.error(`problema in airports: `, airportsResult.reason)
             data.airport = null;
         } else {
